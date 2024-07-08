@@ -1,0 +1,19 @@
+{
+  "name": "whatsapp-bot",
+  "version": "1.0.0",
+  "description": "A WhatsApp bot using Venom and Google Sheets",
+  "main": "venom_bot.js",
+  "scripts": {
+    "start": "node venom_bot.js"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "fs-extra": "^10.0.0",
+    "googleapis": "^39.2.0",
+    "mime-types": "^2.1.27",
+    "venom-bot": "^4.0.0"
+  },
+  "author": "Nagesh",
+  "license": "ISC"
+}
