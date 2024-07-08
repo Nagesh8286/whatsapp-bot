@@ -1,4 +1,6 @@
 const http = require('http');
+const express = require('express');
+const QRCode = require('qrcode');
 const venom = require('venom-bot');
 const { google } = require('googleapis');
 const axios = require('axios');
@@ -6,11 +8,12 @@ const mime = require('mime-types');
 const fs = require('fs-extra');
 const path = require('path');
 
+// Load environment variables
 require('dotenv').config();
 
 // Google Sheets setup
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
-const KEYFILEPATH = '/etc/secrets/google-credentials.json'; // Update this path
+const KEYFILEPATH = ''/etc/secrets/google-credentials.json';
 const SPREADSHEET_ID = '1y-HyJJupGYOPU3YbtCcS2hITlLF8jFCgV42_SqP0H-o';
 
 let authClient;
@@ -342,12 +345,24 @@ async function sendFilesInParallel(client, to, links) {
 async function sendFile(client, to, link) {
   await sendFilesInParallel(client, to, [link]);
 }
-const PORT = process.env.PORT || 3000;
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Hello, Render!\n');
+
+// Create an Express app to serve the QR code
+const app = express();
+let qrCodeData = '';
+
+app.get('/qr', (req, res) => {
+  if (qrCodeData) {
+    QRCode.toDataURL(qrCodeData, (err, url) => {
+      if (err) res.sendStatus(500);
+      res.send(`<img src="${url}" alt="Scan this QR code to login to WhatsApp">`);
+    });
+  } else {
+    res.send('QR code not available yet.');
+  }
 });
 
-server.listen(PORT, () => {
+// Dummy HTTP server to listen on the specified port
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}/`);
 });
