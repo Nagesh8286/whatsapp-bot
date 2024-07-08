@@ -1,3 +1,4 @@
 node_modules/
 tokens/
 .env
+echo "total-furnace-426112-v6-5eb15aa73d91.json" >> .gitignore
