@@ -7,7 +7,7 @@ const path = require('path');
 
 // Google Sheets setup
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
-const KEYFILEPATH = process.env.GOOGLE_APPLICATION_CREDENTIALS; // Update this path
+const KEYFILEPATH = '/etc/secrets/google-credentials.json'; // Update this path
 const SPREADSHEET_ID = '1y-HyJJupGYOPU3YbtCcS2hITlLF8jFCgV42_SqP0H-o';
 
 let authClient;
