@@ -13,7 +13,7 @@ require('dotenv').config();
 
 // Google Sheets setup
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
-const KEYFILEPATH = ''/etc/secrets/google-credentials.json';
+const KEYFILEPATH = '/etc/secrets/google-credentials.json';
 const SPREADSHEET_ID = '1y-HyJJupGYOPU3YbtCcS2hITlLF8jFCgV42_SqP0H-o';
 
 let authClient;
