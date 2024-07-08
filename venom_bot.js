@@ -1,9 +1,12 @@
+const http = require('http');
 const venom = require('venom-bot');
 const { google } = require('googleapis');
 const axios = require('axios');
 const mime = require('mime-types');
 const fs = require('fs-extra');
 const path = require('path');
+
+require('dotenv').config();
 
 // Google Sheets setup
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive'];
